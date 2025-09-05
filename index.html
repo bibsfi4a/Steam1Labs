@@ -1079,7 +1079,6 @@
             const canvas = document.getElementById('particle-canvas');
             const ctx = canvas.getContext('2d');
             let particles = [];
-            const particleCount = 100;
             const bondDistance = 150;
 
             function random(min, max) {
@@ -1094,7 +1093,7 @@
                     this.vy = random(-0.2, 0.2); 
                     this.radius = 2;
                     this.color = '#3498db'; 
-                    this.opacity = random(0.5, 0.8);
+                    this.opacity = random(0.3, 0.6); // Reduced opacity
                 }
 
                 update() {
@@ -1120,6 +1119,16 @@
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
+                
+                let particleCount;
+                if (window.innerWidth <= 768) {
+                    particleCount = 35;
+                } else if (window.innerWidth <= 1024) {
+                    particleCount = 60;
+                } else {
+                    particleCount = 100;
+                }
+
                 particles = [];
                 for (let i = 0; i < particleCount; i++) {
                     particles.push(new Particle());
@@ -1138,7 +1147,7 @@
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = `rgba(52, 152, 219, ${opacity * 0.5})`;
+                            ctx.strokeStyle = `rgba(52, 152, 219, ${opacity * 0.3})`; // Reduced bond opacity
                             ctx.stroke();
                         }
                     }
@@ -1147,7 +1156,7 @@
 
             function animateBackground() {
                 requestAnimationFrame(animateBackground);
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.2)'; // Fading trail on white background
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)'; // Faster fade for less clutter
                 ctx.fillRect(0, 0, canvas.width, canvas.height); 
                 
                 drawBonds();
