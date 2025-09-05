@@ -1,0 +1,730 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEAMLabs | Get Involved</title>
+    <!-- Google Fonts for a modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* This single line of CSS enables smooth scrolling for all anchor links */
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Basic Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6; 
+            color: #4a4a4a; 
+            background-color: #fff;
+            font-size: 0.95rem; 
+            overflow-x: hidden; /* Prevents horizontal scrolling */
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #2c3e50; 
+            margin-bottom: 1rem; 
+            font-weight: 700;
+        }
+
+        /* Standardized fluid font sizes for consistency */
+        h1 { font-size: clamp(2.2rem, 3.5vw, 3.5rem); }
+        h2 { font-size: clamp(1.8rem, 2.8vw, 2.8rem); }
+        h3 { font-size: clamp(1.4rem, 2.2vw, 2.2rem); }
+
+        p {
+            margin-bottom: 1rem; 
+            font-size: 0.95em; 
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db; 
+            transition: color 0.2s ease-in-out; 
+        }
+
+        a:hover {
+            color: #2980b9;
+        }
+
+        .container {
+            max-width: 1100px; 
+            width: 90%; 
+            margin: 0 auto;
+            padding: 2rem 0; 
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-small {
+            display: inline-block;
+            padding: 0.5rem 1.1rem;
+            font-size: 0.85rem;
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn-small:hover {
+            background-color: #2980b9;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(230, 245, 255, 0.6); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08); 
+            padding: 0.7rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            width: 100%; 
+            padding: 0.7rem 2.5%; 
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 48px; 
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem; 
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 0;
+        }
+
+        .nav-links a {
+            color: #2c3e50; 
+            font-weight: 600;
+            font-size: 0.95rem; 
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3498db; 
+        }
+
+        .nav-links .donate-btn a {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 0.4rem 0.9rem; 
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-links .donate-btn a:hover {
+            background-color: #c0392b;
+            transform: translateY(-1px);
+        }
+
+        /* Dropdown Menu */
+        .nav-links li.dropdown {
+            position: relative;
+        }
+
+        .nav-links .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            list-style: none;
+            padding: 0.5rem 0;
+            min-width: 160px;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+
+        .nav-links .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-links .dropdown-menu li {
+            width: 100%;
+        }
+
+        .nav-links .dropdown-menu a {
+            display: block;
+            padding: 0.7rem 1.2rem;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .nav-links .dropdown-menu a:hover {
+            background-color: #f0f8ff;
+            color: #3498db;
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 22px; 
+            height: 2px; 
+            background-color: #2c3e50; 
+            margin: 4px; 
+            transition: all 0.3s ease;
+        }
+
+        /* Page Hero */
+        .page-hero-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.ibb.co/99478jD9/San-Diego-CA-Pacific-Highlands-Ranch-Library.jpg') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .page-hero-content {
+            max-width: 800px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        }
+        .page-hero-content h1 {
+            color: #fff;
+        }
+
+        /* Section Styling (General) */
+        section {
+            padding: 4.5rem 0;
+            width: 100%;
+        }
+        .section-bg-light {
+             background-color: #f9f9f9;
+        }
+
+        /* Get Involved Section */
+        .get-involved-section .involvement-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 1.8rem; 
+            margin-top: 2.5rem; 
+            width: 100%;
+        }
+        .get-involved-section h2 {
+            text-align: center;
+        }
+        .get-involved-section .intro-paragraph {
+            text-align: center;
+            max-width: 800px;
+            margin: 1.5rem auto 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .option-card {
+            background-color: #fff;
+            padding: 1.8rem; 
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+            text-align: center; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 220px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .option-card h3 {
+            color: #2ecc71;
+            margin-bottom: 0.7rem;
+        }
+
+        .option-card p {
+            font-size: 0.95em;
+            color: #666;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .option-card .btn-small {
+            margin-top: 1rem; 
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #cccccc;
+            padding: 4rem 0 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        footer .container {
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .footer-link-columns {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-link-columns div {
+            text-align: left;
+        }
+
+        .footer-link-columns a {
+            display: block;
+            color: #cccccc;
+            margin-bottom: 0.8rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link-columns a:hover {
+            color: #3498db;
+        }
+
+        .footer-social {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .footer-social a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #3498db;
+        }
+
+        .footer-copyright {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #a0a0a0;
+            max-width: 70%;
+            line-height: 1.5;
+        }
+
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.3s, opacity 0.3s ease-in-out;
+            z-index: 2000;
+        }
+        .modal.show { visibility: visible; opacity: 1; }
+        .modal-content {
+            background-color: #fff;
+            padding: 1.8rem; 
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+            transform: translateY(-15px);
+            transition: transform 0.3s ease-in-out;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal.show .modal-content { transform: translateY(0); }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.7rem;
+        }
+        .modal-header h3 { margin: 0; color: #3498db; }
+        .modal-close-btn { background: none; border: none; font-size: 1.6rem; color: #777; cursor: pointer; transition: color 0.2s ease; }
+        .modal-close-btn:hover { color: #e74c3c; }
+        .modal-form label { display: block; text-align: left; margin-bottom: 0.4rem; font-weight: 600; color: #555; font-size: 0.95em; }
+        .modal-form input[type="text"], .modal-form input[type="email"], .modal-form select, .modal-form textarea {
+            width: 100%;
+            padding: 0.7rem 0.9rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .modal-form input[type="text"]:focus, .modal-form input[type="email"]:focus, .modal-form select:focus, .modal-form textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+        }
+        .modal-form textarea { resize: vertical; min-height: 70px; }
+        .modal-form .checkbox-group label { display: flex; align-items: flex-start; margin-bottom: 0.6rem; font-weight: 400; text-align: left; line-height: 1.3; }
+        .modal-form .checkbox-group input[type="checkbox"] { width: auto; margin-right: 0.6rem; margin-bottom: 0; transform: scale(0.9); flex-shrink: 0; margin-top: 0.1em; }
+        .modal-form .checkbox-group .other-text-input { margin-top: 0.3rem; margin-left: 1.5rem; width: calc(100% - 1.5rem); }
+        .modal-form .form-group { margin-bottom: 1rem; }
+        .modal-form button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 0.9rem;
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 8px rgba(46, 204, 113, 0.3);
+        }
+        .modal-form button[type="submit"]:hover { background-color: #27ae60; transform: translateY(-1px); box-shadow: 0 5px 12px rgba(46, 204, 113, 0.4); }
+        .discord-info { background-color: #f0f8ff; border-left: 4px solid #3498db; padding: 0.9rem; margin-bottom: 1rem; border-radius: 6px; text-align: left; font-size: 0.85rem; color: #333; }
+        .discord-info a { font-weight: 700; }
+        #message-box { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); background-color: #333; color: #fff; padding: 10px 18px; border-radius: 6px; font-size: 0.9rem; opacity: 0; visibility: hidden; transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; z-index: 2001; }
+        #message-box.show { opacity: 1; visibility: visible; }
+
+        @keyframes navLinkFade { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0px); } }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 1rem;
+            }
+            .burger { display: block; }
+            .nav-links {
+                position: fixed; right: 0; top: 71px; height: calc(100vh - 71px); background-color: #2c3e50;
+                flex-direction: column; align-items: center; justify-content: flex-start; width: 70%;
+                transform: translateX(100%); transition: transform 0.5s ease-in; z-index: 999;
+                padding-top: 2rem; box-shadow: -2px 0 8px rgba(0,0,0,0.15); gap: 0; overflow-y: auto;
+            }
+            .nav-links.nav-active { transform: translateX(0%); }
+            .nav-links li { opacity: 0; width: 100%; text-align: center; }
+            .nav-links a { display: block; padding: 1rem; width: 100%; color: #f0f8ff; }
+            .nav-links a:hover {
+                color: #3498db;
+            }
+            .nav-links .donate-btn a { margin: 1rem auto; display: inline-block; width: auto; }
+            .nav-links .donate-btn a:hover {
+                background-color: #c0392b;
+                color: #fff;
+            }
+            .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .toggle .line2 { opacity: 0; }
+            .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+            .footer-link-columns { flex-direction: column; gap: 2rem; align-items: center; text-align: center; }
+            .footer-link-columns div { text-align: center; }
+            
+            /* Mobile Dropdown Styling */
+            .nav-links .dropdown-menu {
+                display: block; position: static; box-shadow: none; background-color: transparent; padding: 0;
+                min-width: auto; transform: none; opacity: 1; visibility: visible; transition: none;
+            }
+            .nav-links .dropdown-menu a { padding-left: 2rem; font-size: 0.9em; padding-top: 0.5rem; padding-bottom: 0.5rem; color: #b0c4de; }
+            .nav-links .dropdown-menu a:hover {
+                background-color: transparent;
+                color: #3498db;
+            }
+            .nav-links .dropdown:hover .dropdown-menu { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html" aria-label="STEAMLabs Home">
+                    <img src="https://i.ibb.co/Xf4CCb4j/Screenshot-2025-08-30-at-12-40-21-AM.png" alt="STEAMLabs Logo" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="about.html">About Us</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="members.html">Our Board</a></li>
+                    </ul>
+                </li>
+                <li><a href="Impact.html">Our Impact</a></li>
+                <li><a href="programs.html">Our Programs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="get-involved.html">Get Involved</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li class="donate-btn"><a href="#donate">Donate</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero-section">
+            <div class="page-hero-content">
+                <h1>Get Involved</h1>
+            </div>
+        </section>
+
+        <section id="get-involved-options" class="get-involved-section section-bg-light">
+            <div class="container">
+                <h2>Make a Difference</h2>
+                <p class="intro-paragraph">At STEAMLabs, we believe change starts with people like you. Whether you're volunteering your time, partnering with us to reach more schools, or helping us grow through donations, your support fuels hands-on science for the students who need it most. Together, we can spark curiosity and build a brighter future.</p>
+                <div class="involvement-options">
+                    <div class="option-card">
+                        <h3>Volunteer</h3>
+                        <p>Dedicate your time and expertise to mentor students or assist with workshops.</p>
+                        <a href="#" class="btn-small" id="open-volunteer-modal">Become a Volunteer</a>
+                    </div>
+                    <div class="option-card">
+                        <h3>Partner</h3>
+                        <p>Collaborate with us to expand our reach and resources in your community.</p>
+                        <a href="#" class="btn-small" id="open-partner-modal">Partner With Us</a>
+                    </div>
+                    <div class="option-card">
+                        <h3>Donate</h3>
+                        <p>Your contribution directly supports our programs and empowers more students.</p>
+                        <a href="#donate" class="btn-small">Support Our Mission</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="donate">
+            <div class="container" style="text-align: center; max-width: 700px;">
+                <h2>Support Our Mission</h2>
+                <p>Your generous donation helps us provide free, high-quality STEM education to underserved students. Every contribution, no matter the size, makes a significant impact by helping us purchase materials, develop new programs, and reach more communities.</p>
+                <p><em>Donation functionality is coming soon. Thank you for your interest!</em></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-link-columns">
+                <div>
+                    <a href="about.html">About Us</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="Impact.html">Our Impact</a>
+                </div>
+                <div>
+                    <a href="get-involved.html">Get Involved</a>
+                    <a href="index.html#contact">Contact</a>
+                    <a href="members.html">Our Board</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/steamlabs_official" target="_blank">Instagram</a>
+            </div>
+            <p class="footer-copyright">&copy; 2025 STEAMLabs. All rights reserved. STEAMLabs is a registered 501(c)(3) nonprofit organization.</p>
+        </div>
+    </footer>
+
+    <!-- Volunteer Application Modal -->
+    <div id="volunteer-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Become a Volunteer</h3>
+                <button class="modal-close-btn">&times;</button>
+            </div>
+            <form id="volunteer-form" class="modal-form">
+                <div class="form-group"><label for="volunteer-first-name">First Name <span style="color: red;">*</span>:</label><input type="text" id="volunteer-first-name" name="first_name" required></div>
+                <div class="form-group"><label for="volunteer-last-name">Last Name <span style="color: red;">*</span>:</label><input type="text" id="volunteer-last-name" name="last_name" required></div>
+                <div class="form-group"><label for="volunteer-preferred-name">Preferred Name:</label><input type="text" id="volunteer-preferred-name" name="preferred_name"></div>
+                <div class="form-group"><label for="volunteer-pronouns">Pronouns:</label><input type="text" id="volunteer-pronouns" name="pronouns"></div>
+                <div class="form-group"><label for="volunteer-personal-email">Personal Email <span style="color: red;">*</span>:</label><input type="email" id="volunteer-personal-email" name="personal_email" required></div>
+                <div class="form-group"><label for="volunteer-contact-way">Best way to contact you (email, phone number, Instagram, etc.) <span style="color: red;">*</span>:</label><input type="text" id="volunteer-contact-way" name="contact_preference" required></div>
+                <div class="form-group"><label for="volunteer-city">City <span style="color: red;">*</span>:</label><input type="text" id="volunteer-city" name="city" required></div>
+                <div class="form-group"><label for="volunteer-state">State <span style="color: red;">*</span>:</label><input type="text" id="volunteer-state" name="state" required></div>
+                <div class="form-group"><label for="volunteer-school">School <span style="color: red;">*</span>:</label><input type="text" id="volunteer-school" name="school" required></div>
+                <div class="form-group"><label for="volunteer-grade-level">Grade Level <span style="color: red;">*</span>:</label><select id="volunteer-grade-level" name="grade_level" required><option value="">--Please choose an option--</option><option value="9th Grade">9th Grade</option><option value="10th Grade">10th Grade</option><option value="11th Grade">11th Grade</option><option value="12th Grade">12th Grade</option><option value="College/University">College/University</option><option value="Graduate School">Graduate School</option><option value="Other">Other</option></select></div>
+                <div class="form-group"><label for="volunteer-graduation-year">High School Graduation Year <span style="color: red;">*</span>:</label><input type="text" id="volunteer-graduation-year" name="graduation_year" placeholder="e.g., 2025" required></div>
+                <div class="form-group"><label for="volunteer-tshirt-size">T Shirt Size <span style="color: red;">*</span>:</label><select id="volunteer-tshirt-size" name="tshirt_size" required><option value="">--Please choose an option--</option><option value="XS">XS</option><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option></select></div>
+                <div class="form-group"><label>Areas of Interest (check all that apply) <span style="color: red;">*</span>:</label><div class="checkbox-group"><label><input type="checkbox" name="areas_of_interest" value="Chemistry demos"> Chemistry demos</label><label><input type="checkbox" name="areas_of_interest" value="Physics/Engineering builds"> Physics/Engineering builds</label><label><input type="checkbox" name="areas_of_interest" value="Biology & life sciences"> Biology & life sciences</label><label><input type="checkbox" name="areas_of_interest" value="Environmental science"> Environmental science</label><label><input type="checkbox" name="areas_of_interest" value="Coding/Robotics"> Coding/Robotics</label><label><input type="checkbox" name="areas_of_interest" value="Art/Design for STEAM"> Art/Design for STEAM</label><label><input type="checkbox" name="areas_of_interest" value="Photography/Video"> Photography/Video</label><label><input type="checkbox" name="areas_of_interest" value="Outreach & Events"> Outreach & Events</label><label><input type="checkbox" name="areas_of_interest" value="Website/Tech"> Website/Tech</label><label><input type="checkbox" name="areas_of_interest" value="Other"> Other:<input type="text" name="areas_of_interest_other_text" class="other-text-input" placeholder="Please specify"></label></div></div>
+                <div class="form-group"><label>Skills (check all that apply) <span style="color: red;">*</span>:</label><div class="checkbox-group"><label><input type="checkbox" name="skills" value="Public speaking"> Public speaking</label><label><input type="checkbox" name="skills" value="Leading groups of kids"> Leading groups of kids</label><label><input type="checkbox" name="skills" value="Slide design (Google Slides/Canva)"> Slide design (Google Slides/Canva)</label><label><input type="checkbox" name="skills" value="Soldering/Arduino"> Soldering/Arduino</label><label><input type="checkbox" name="skills" value="Basic lab safety"> Basic lab safety</label><label><input type="checkbox" name="skills" value="Graphic design"> Graphic design</label><label><input type="checkbox" name="skills" value="Video editing"> Video editing</label><label><input type="checkbox" name="skills" value="Spreadsheet/organizing"> Spreadsheet/organizing</label><label><input type="checkbox" name="skills" value="Grant writing"> Grant writing</label><label><input type="checkbox" name="skills" value="Photography"> Photography</label><label><input type="checkbox" name="skills" value="Other"> Other:<input type="text" name="skills_other_text" class="other-text-input" placeholder="Please specify"></label></div></div>
+                <div class="form-group"><label>Roles You're Interested In:</label><div class="checkbox-group"><label><input type="checkbox" name="roles_interested_in" value="General Member (events helper)"> General Member (events helper)</label><label><input type="checkbox" name="roles_interested_in" value="Experiments/Procedures Team"> Experiments/Procedures Team</label><label><input type="checkbox" name="roles_interested_in" value="School Outreach/Partnerships"> School Outreach/Partnerships</label><label><input type="checkbox" name="roles_interested_in" value="Social Media/Design"> Social Media/Design</label><label><input type="checkbox" name="roles_interested_in" value="Photographer/Videographer"> Photographer/Videographer</label><label><input type="checkbox" name="roles_interested_in" value="Fundraising/Grants"> Fundraising/Grants</label><label><input type="checkbox" name="roles_interested_in" value="Chapter Leader"> Chapter Leader (in charge of leading all STEAMLabs members in your region)</label></div></div>
+                <div class="discord-info"><p>Lastly, all STEAMLabs announcements, chapter-specific rules, policies, and communications will be shared exclusively through our Discord server. Joining the server is MANDATORY in order to stay updated and participate in events.</p><p><a href="https://discord.gg/CAUkEyUM6" target="_blank">https://discord.gg/CAUkEyUM6</a></p></div>
+                <div class="form-group"><label for="volunteer-any-questions">Any Questions?:</label><textarea id="volunteer-any-questions" name="any_questions" rows="4"></textarea></div>
+                <button type="submit">Submit Application</button>
+            </form>
+        </div>
+    </div>
+    <div id="partner-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><h3>Partner With Us</h3><button class="modal-close-btn">&times;</button></div>
+            <form id="partner-form" class="modal-form">
+                <div class="form-group"><label for="partner-corporation-name">Corporation Name:</label><input type="text" id="partner-corporation-name" name="corporation_name" required></div>
+                <div class="form-group"><label for="partner-corporation-type">Corporation Type:</label><select id="partner-corporation-type" name="corporation_type" required><option value="">--Please choose an option--</option><option value="Non-profit">Non-profit</option><option value="For-profit">For-profit</option><option value="501(c)(3)">501(c)(3)</option><option value="Educational Institution">Educational Institution</option><option value="Administrative Authority">Administrative Authority</option><option value="Business Organization">Business Organization</option></select></div>
+                <div class="form-group"><label for="partner-email">Email:</label><input type="email" id="partner-email" name="email" required></div>
+                <div class="form-group"><label for="partner-message">Leave us a message:</label><textarea id="partner-message" name="message" rows="4"></textarea></div>
+                <button type="submit">Submit Partnership Request</button>
+            </form>
+        </div>
+    </div>
+    <div id="message-box"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Nav
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav-links');
+            const navLinks = document.querySelectorAll('.nav-links > li');
+
+            burger.addEventListener('click', () => {
+                nav.classList.toggle('nav-active');
+                navLinks.forEach((link, index) => {
+                    if (link.style.animation) {
+                        link.style.animation = '';
+                    } else {
+                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                    }
+                });
+                burger.classList.toggle('toggle');
+            });
+            
+            function showMessage(message, type = 'success') {
+                const messageBox = document.getElementById('message-box');
+                messageBox.textContent = message;
+                messageBox.className = ''; 
+                messageBox.classList.add('show');
+                messageBox.classList.add(type); 
+                setTimeout(() => { messageBox.classList.remove('show'); }, 3000);
+            }
+
+            function attachModalToggleHandlers() {
+                const openVolunteerModalBtn = document.getElementById('open-volunteer-modal');
+                const volunteerModal = document.getElementById('volunteer-modal');
+                const closeVolunteerModalBtn = volunteerModal.querySelector('.modal-close-btn');
+                const openPartnerModalBtn = document.getElementById('open-partner-modal');
+                const partnerModal = document.getElementById('partner-modal');
+                const closePartnerModalBtn = partnerModal.querySelector('.modal-close-btn');
+
+                if (openVolunteerModalBtn) { openVolunteerModalBtn.addEventListener('click', (e) => { e.preventDefault(); volunteerModal.classList.add('show'); }); }
+                if (closeVolunteerModalBtn) { closeVolunteerModalBtn.addEventListener('click', () => { volunteerModal.classList.remove('show'); }); }
+                if (volunteerModal) { volunteerModal.addEventListener('click', (e) => { if (e.target === volunteerModal) { volunteerModal.classList.remove('show'); } }); }
+                if (openPartnerModalBtn) { openPartnerModalBtn.addEventListener('click', (e) => { e.preventDefault(); partnerModal.classList.add('show'); }); }
+                if (closePartnerModalBtn) { closePartnerModalBtn.addEventListener('click', () => { partnerModal.classList.remove('show'); }); }
+                if (partnerModal) { partnerModal.addEventListener('click', (e) => { if (e.target === partnerModal) { partnerModal.classList.remove('show'); } }); }
+            }
+
+            function attachFormSubmitHandlers() {
+                const volunteerForm = document.getElementById('volunteer-form');
+                const partnerForm = document.getElementById('partner-form');
+                if (volunteerForm) { volunteerForm.addEventListener('submit', (e) => { e.preventDefault(); showMessage("Form submissions are currently disabled.", 'error'); }); }
+                if (partnerForm) { partnerForm.addEventListener('submit', (e) => { e.preventDefault(); showMessage("Form submissions are currently disabled.", 'error'); }); }
+            }
+            
+            attachModalToggleHandlers();
+            attachFormSubmitHandlers();
+
+            // Particle Animation
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const particleCount = 100;
+            const bondDistance = 150;
+            function random(min, max) { return Math.random() * (max - min) + min; }
+            class Particle {
+                constructor() { this.x = random(0, canvas.width); this.y = random(0, canvas.height); this.vx = random(-0.2, 0.2); this.vy = random(-0.2, 0.2); this.radius = 2; this.color = '#3498db'; this.opacity = random(0.5, 0.8); }
+                update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) { this.vx *= -1; } if (this.y < 0 || this.y > canvas.height) { this.vy *= -1; } }
+                draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = `rgba(${parseInt(this.color.slice(1, 3), 16)}, ${parseInt(this.color.slice(3, 5), 16)}, ${parseInt(this.color.slice(5, 7), 16)}, ${this.opacity})`; ctx.fill(); }
+            }
+            function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; particles = []; for (let i = 0; i < particleCount; i++) { particles.push(new Particle()); } }
+            function drawBonds() { for (let i = 0; i < particles.length; i++) { for (let j = i + 1; j < particles.length; j++) { const dx = particles[i].x - particles[j].x; const dy = particles[i].y - particles[j].y; const distance = Math.sqrt(dx * dx + dy * dy); if (distance < bondDistance) { const opacity = 1 - (distance / bondDistance); ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.strokeStyle = `rgba(52, 152, 219, ${opacity * 0.5})`; ctx.stroke(); } } } }
+            function animateBackground() { requestAnimationFrame(animateBackground); ctx.fillStyle = 'rgba(255, 255, 255, 0.2)'; ctx.fillRect(0, 0, canvas.width, canvas.height); drawBonds(); particles.forEach(particle => { particle.update(); particle.draw(); }); }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+            animateBackground();
+        });
+    </script>
+</body>
+</html>
